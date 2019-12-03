@@ -2,7 +2,7 @@
 
 Ansible role to install awx requirements when using "docker-compose"
 
-## role variables
+## Role variables
 
 ```yaml
 # Will create /etc/enviroment if it does not exists & add the following value (usefull when using pip3)
@@ -11,7 +11,7 @@ Ansible role to install awx requirements when using "docker-compose"
 awx_req_set_env: false
 ```
 
-## playbook example
+## Playbook example
 ```yaml
 ---
 - hosts: awx
@@ -33,11 +33,12 @@ xenial4 ansible_ssh_host=192.168.62.4 ansible_user=vagrant ansible_python_interp
 bionic5 ansible_ssh_host=192.168.62.5 ansible_user=vagrant ansible_python_interpreter=/usr/bin/python3
 ```
 
-## play
+[vagrant](https://github.com/slgevens/vagrant.git)
+
+## Play
 ```console
 ➜  awx ansible-playbook  --syntax-check main.yml                    
 ```
-
 
 ## License
 
