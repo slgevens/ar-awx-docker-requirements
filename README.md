@@ -33,12 +33,7 @@ xenial4 ansible_ssh_host=192.168.62.4 ansible_user=vagrant ansible_python_interp
 bionic5 ansible_ssh_host=192.168.62.5 ansible_user=vagrant ansible_python_interpreter=/usr/bin/python3
 ```
 
-[vagrant](https://github.com/slgevens/vagrant.git)
-
-## Play
-```console
-➜  awx ansible-playbook  --syntax-check main.yml                    
-```
+[vagrant](https://github.com/slgevens/vagrant/blob/master/ansible_tests/Vagrantfile)
 
 ## License
 
