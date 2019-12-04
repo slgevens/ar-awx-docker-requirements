@@ -1,0 +1,18 @@
+---
+galaxy_info:
+  author: Evens SOLIGNAC
+  description: Ansible role to install awx requirements when using "docker-compose"
+  license: MIT
+  min_ansible_version: 2.1
+  platforms:
+    - name: Debian
+      versions:
+        - buster
+        - stretch
+    - name: Ubuntu
+        - xenial
+        - bionic
+  galaxy_tags:
+    - cloud
+    - system
+  dependencies: []

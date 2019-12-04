@@ -1,0 +1,91 @@
+---
+# apt
+- block:
+  - name: main.yml | Apt update
+    apt:
+      update_cache: yes
+
+  - name: main.yml | Set OS dependent variables
+    include_vars: '{{ item }}'
+    with_items:
+      - "{{ ansible_distribution }}_{{ ansible_distribution_release }}.yml"
+      - default/main.yml
+
+  - name: main.yml | Install apt packages deps
+    apt:
+      name: "{{ awx_req_apt_deps_packages }}"
+      state: present
+  tags: awx_apt
+
+# pip
+- block:
+  - name: main.yml | Install pip required packages
+    pip:
+      name: "{{ awx_req_pip_packages }}"
+    environment:
+      LC_ALL: en_US.UTF-8
+      LC_CTYPE: en_US.UTF-8
+  tags: awx_pip
+
+# docker
+- block:
+  - name: main.yml | Apt docker key
+    apt_key:
+      url: "{{ awx_req_docker_apt_key }}"
+      state: present
+
+  - name: main.yml | Apt docker key
+    apt_key:
+      id: "{{ awx_req_docker_apt_fingerprint }}"
+      state: present
+
+  - name: main.yml | Apt docker repository
+    lineinfile:
+      line: "deb [arch=amd64] https://download.docker.com/linux/{{ ansible_distribution | lower }} {{ ansible_distribution_release }} stable"
+      path: /etc/apt/sources.list.d/docker-ce.list
+      create: yes
+
+  - name: main.yml | Apt update cache
+    apt:
+      update_cache: yes
+
+  - name: main.yml | Install docker packages
+    apt:
+      name: "{{ awx_req_docker_packages }}"
+      state: present
+
+  - name: main.yml | Downloading docker-compose
+    get_url:
+      url: "{{ awx_req_docker_compose_url }}"
+      dest: /usr/local/bin/docker-compose
+      mode: '0755'
+  tags: awx_docker
+
+- block:
+  - name: main.yml | Downloading node_10.x setup script
+    get_url:
+      url: "{{ awx_req_node_url }}"
+      dest: /opt/node_setup_10.x
+      mode: '0755'
+
+  - name: main.yml | Launching node_10.x setup script
+    shell: "bash /opt/node_setup_10.x"
+    args:
+      creates: /etc/apt/sources.list.d/nodesource.list
+
+  - name: main.yml | Install node 10
+    apt:
+      name: "{{ awx_req_node_package }}"
+  tags: awx_node
+
+# env
+- block:
+  - name: main.yml | Set LC_ALL & nLC_CTYPE in /etc/environment if awx_req_set_env is set to true (default to false)
+    blockinfile:
+      path: "/etc/bash.bashrc"
+      block: "LC_ALL=en_US.UTF-8\nLC_CTYPE=en_US.UTF-8"
+      insertafter: EOF
+      create: true
+    when: awx_req_set_env is defined
+
+  tags: awx_git_extra

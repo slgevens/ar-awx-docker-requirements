@@ -1,0 +1,19 @@
+---
+# docker
+awx_req_docker_apt_fingerprint: 0EBFCD88
+
+# docker-compose
+awx_req_docker_compose_url: https://github.com/docker/compose/releases/download/1.24.1/docker-compose-Linux-x86_64
+
+# pip
+awx_req_pip_packages: ["pyopenssl==19.1.0", "pycrypto==2.6.1", "docker-compose==1.25.0", "setuptools==42.0.2", "ansible==2.7.15"]
+
+# node
+awx_req_node_url: https://deb.nodesource.com/setup_10.x
+awx_req_node_package: "nodejs=10.17.0-1nodesource1"
+
+# env
+# will create /etc/enviroment if it does not exists & add the following value (usefull when using pip3)
+# LC_ALL=en_US.UTF-8
+# LC_CTYPE=en_US.UTF-8
+awx_req_set_env: false
