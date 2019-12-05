@@ -82,7 +82,7 @@
 - block:
   - name: main.yml | Set LC_ALL & nLC_CTYPE in /etc/environment if awx_req_set_env is set to true (default to false)
     blockinfile:
-      path: "/etc/bash.bashrc"
+      path: "/etc/environment"
       block: "LC_ALL=en_US.UTF-8\nLC_CTYPE=en_US.UTF-8"
       insertafter: EOF
       create: true
