@@ -5,7 +5,7 @@ Ansible role to install awx requirements when using ["docker-compose"](https://g
 ## Role variables
 
 ```yaml
-# Will create /etc/enviroment if it does not exists & add the following value (usefull when using pip3)
+# Will create /etc/environment if it does not exists & add the following value (usefull when using pip3)
 # LC_ALL=en_US.UTF-8
 # LC_CTYPE=en_US.UTF-8
 awx_req_set_env: false
