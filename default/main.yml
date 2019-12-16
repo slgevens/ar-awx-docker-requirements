@@ -13,7 +13,7 @@ awx_req_node_url: https://deb.nodesource.com/setup_10.x
 awx_req_node_package: "nodejs=10.17.0-1nodesource1"
 
 # env
-# will create /etc/enviroment if it does not exists & add the following value (usefull when using pip3)
+# will create /etc/enviroment if it does not exists & add the following content (usefull when using pip3)
 # LC_ALL=en_US.UTF-8
 # LC_CTYPE=en_US.UTF-8
 awx_req_set_env: false
