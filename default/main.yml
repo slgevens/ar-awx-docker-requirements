@@ -10,7 +10,7 @@ awx_req_pip_packages: ["pyopenssl==19.1.0", "pycrypto==2.6.1", "docker-compose==
 
 # node
 awx_req_node_url: https://deb.nodesource.com/setup_10.x
-awx_req_node_package: "nodejs=10.17.0-1nodesource1"
+awx_req_node_package: "nodejs"
 
 # env
 # will create /etc/enviroment if it does not exists & add the following content (usefull when using pip3)
