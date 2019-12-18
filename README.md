@@ -1,4 +1,4 @@
-# ar-awx-requirements
+# ar-awx-docker-requirements
 
 Ansible role to install awx requirements when using ["docker-compose"](https://github.com/ansible/awx/blob/devel/INSTALL.md#prerequisites-3)
 
