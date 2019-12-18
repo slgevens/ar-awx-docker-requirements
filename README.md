@@ -28,7 +28,7 @@ When using python3 on remote host, it is usefull to set the `ansible_python_inte
 ```
 [awx]
 stretch2 ansible_ssh_host=192.168.62.2 ansible_user=vagrant
-buster3 ansible_ssh_host=192.168.62.3 ansible_user=vagrant
+buster3 ansible_ssh_host=192.168.62.3 ansible_user=vagrant ansible_python_interpreter=/usr/bin/python3
 xenial4 ansible_ssh_host=192.168.62.4 ansible_user=vagrant ansible_python_interpreter=/usr/bin/python3
 bionic5 ansible_ssh_host=192.168.62.5 ansible_user=vagrant ansible_python_interpreter=/usr/bin/python3
 ```
